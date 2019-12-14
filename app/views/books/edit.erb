@@ -1,0 +1,26 @@
+<h1>Update Books</h1>
+
+<h2>Edits for <%= @book.name %></h2>
+
+  <form action="/book/<%= @book.id %>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <label>Edit the Pet's Name:</label>
+    <input type="text" name="book[name]" id= "book_name" value="<%= @book.name %>">
+
+    <br>
+    <p>Select an existing owner or create a new one below.</p>
+
+
+    <h3>Existing Users</h3>
+    <% User.all.each do |user| %>
+      <input type="radio" name="book[user_id]" id="<%= owner.id %>" value="<%= owner.id %>" <%='checked' if @book.user == user %>><%= user.name %></input><br>
+    <% end %>
+    <br>
+
+    <h3>New User</h3>
+    <label>User Name: </label>
+    <input type="text" name="user[name]" id="user_name"></input>
+    <br><br>
+
+    <input type="submit" value="Update Book">
+  </form>
