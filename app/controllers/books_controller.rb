@@ -7,8 +7,8 @@ class BooksController < ApplicationController
     post '/books' do
       @book = Book.create(params[:book])
   
-      if params["title"]
-        @book.user = User.create
+      if params["name"]
+        @book.user = User.create(name: params["name"])
       end
   
       @book.save
