@@ -1,1 +1,2 @@
-<h1><%=@book.name%></h1>
+<%=@book = Book.all %>
+<h1><ul><%=@book.map {|book| [book["title"]]}.uniq%></ul></h1>
